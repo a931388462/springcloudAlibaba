@@ -1,0 +1,16 @@
+server:
+  port: 8005
+
+spring:
+  profiles:
+    active: dev
+  application:
+    #默认根据服务名拉取对应dataid的配置文件
+    name: config-nacos
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public

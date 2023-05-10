@@ -1,0 +1,18 @@
+server:
+  port: 8007
+
+spring:
+  application:
+    name: sentinel-persistence
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+      web-context-unify: false #默认将调用链路收敛
+      datasource:
+        flow: #可自定义
+          nacos:
+            server-addr: localhost:8848
+            dataId: sentinel-persistence-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: flow #还可以是其他的

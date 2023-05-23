@@ -20,6 +20,8 @@
 		<module>config-nacos</module>
 		<module>sentinel</module>
 		<module>sentinel-persistence</module>
+		<module>geteway-nacos</module>
+		<module>order-skywalking</module>
 	</modules>
 	<packaging>pom</packaging>
 	<properties>

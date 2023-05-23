@@ -1,0 +1,33 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: geteway-nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        namespace: public
+    gateway:
+      routes:
+        - id: order_route #路由的唯一标识
+          uri: lb://order-service #nacos负载均衡,服务名
+          #uri: http://localhost:8001
+          predicates:
+            - Path=/order-service/** # 断言，通过路径相匹配的进行路由
+          filters:
+            - StripPrefix=1  # 转发之前去掉第一层路径
+
+    #配置sentinel
+    sentinel:
+     transport:
+       dashboard: 127.0.0.1:8858
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+

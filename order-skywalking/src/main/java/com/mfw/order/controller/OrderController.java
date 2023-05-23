@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -14,7 +16,7 @@ public class OrderController {
 
     @GetMapping("/aa")
     public String aa(){
-        String forObject = restTemplate.getForObject("http://stock-service/stock/", String.class);
+        String forObject = restTemplate.postForObject("http://stock-service/stock/",new HashMap<String,String>(), String.class);
         return forObject;
     }
 
